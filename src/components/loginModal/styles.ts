@@ -57,7 +57,7 @@ export const StyledH1 = styled.h1`
 export const StyledLoginText = styled.p`
   color: #ffffff;
   font-size: 25px;
-  line-height: 20px;
+  line-height: 25px;
   font-weight: 600;
   @media only screen and (max-width: 640px){
     font-size:20px;

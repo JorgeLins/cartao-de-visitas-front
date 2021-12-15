@@ -38,7 +38,7 @@ export const StyledTitle = styled.p`
   height: 60px;
   text-align: left;
   font: normal normal;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 545;
   letter-spacing: 0px;
   color: #0082d4;
