@@ -32,7 +32,7 @@ export const Dashboard = () => {
   let PER_PAGE = 9;
   const [currentPage, setCurrentPage] = useState(1);
   const [hasClicked, setHasClicked] = useState<boolean>(false);
-  const [hasCardSelected, setHasCardSelected] = useState<boolean>(true);
+  const [hasCardSelected, setHasCardSelected] = useState<boolean>(false);
   const [hasUserSelected, setHasUserSelected] = useState<boolean>(false);
   const [allCards, setAllCards] = useState([]);
   const [pageCount, setPageCount] = useState(0);
@@ -101,6 +101,7 @@ export const Dashboard = () => {
 
   useEffect(() => {
     getAllcards();
+    setHasCardSelected(true);
   }, [getAllcards]);
 
   const handlePageClick = (event: any) => {
@@ -118,8 +119,6 @@ export const Dashboard = () => {
     setInfo(card);
   };
 
-
-
   const handleCardsSelected = () => {
     setHasCardSelected(true)
     setHasUserSelected(false);
@@ -131,6 +130,7 @@ export const Dashboard = () => {
     setHasCardSelected(false);
     getAllProfileCards()
   };
+         
 
   const handleCloseHeaderClickedCard = (card: ICard) => {
     setShowHeader(false);
@@ -192,29 +192,29 @@ export const Dashboard = () => {
           <CardsDiv>
             {isMobile
               ? cardRecent
-                .slice(0, 2)
-                .map((card: ICard) => (
-                  <Card
-                    key={card.id}
-                    name={card.name}
-                    instituition={card.sector}
-                    phone={card.phoneNumber}
-                    url={card.url}
-                    onClick={() => handleCloseHeaderClickedCard(card)}
-                  />
-                ))
+                  .slice(0, 2)
+                  .map((card: ICard) => (
+                    <Card
+                      key={card.id}
+                      name={card.name}
+                      instituition={card.sector}
+                      phone={card.phoneNumber}
+                      url={card.url}
+                      onClick={() => handleCloseHeaderClickedCard(card)}
+                    />
+                  ))
               : cardRecent
-                .slice(0, 3)
-                .map((card: ICard) => (
-                  <Card
-                    key={card.id}
-                    name={card.name}
-                    instituition={card.sector}
-                    phone={card.phoneNumber}
-                    url={card.url}
-                    onClick={() => handleCardClicked(card)}
-                  />
-                ))}
+                  .slice(0, 3)
+                  .map((card: ICard) => (
+                    <Card
+                      key={card.id}
+                      name={card.name}
+                      instituition={card.sector}
+                      phone={card.phoneNumber}
+                      url={card.url}
+                      onClick={() => handleCardClicked(card)}
+                    />
+                  ))}
           </CardsDiv>
           <StyledDivChangePage>
             {hasCardSelected && !hasUserSelected && (
@@ -232,11 +232,6 @@ export const Dashboard = () => {
 
             )}
           </StyledDivChangePage>
-
-
-
-
-
           {!isMobile && (
             <StyledDivSearch>
               <div>
@@ -257,58 +252,58 @@ export const Dashboard = () => {
             <ProfileCardDiv>
               {isMobile
                 ? allCards
-                  .slice(0, 6)
-                  .map((card: ICard) => (
-                    <CardProfile
-                      key={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      role={card.role}
-                      url={card.url}
-                      onClick={() => handleCloseHeaderClickedCard(card)}
-                    />
-                  ))
+                    .slice(0, 6)
+                    .map((card: ICard) => (
+                      <CardProfile
+                        key={card.id}
+                        name={card.name}
+                        instituition={card.sector}
+                        role={card.role}
+                        url={card.url}
+                        onClick={() => handleCloseHeaderClickedCard(card)}
+                      />
+                    ))
                 : allCards
-                  .slice(0, 9)
-                  .map((card: ICard) => (
-                    <CardProfile
-                      key={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      role={card.role}
-                      url={card.url}
-                      onClick={() => handleCardClicked(card)}
-                    />
-                  ))}
+                    .slice(0, 9)
+                    .map((card: ICard) => (
+                      <CardProfile
+                        key={card.id}
+                        name={card.name}
+                        instituition={card.sector}
+                        role={card.role}
+                        url={card.url}
+                        onClick={() => handleCardClicked(card)}
+                      />
+                    ))}
             </ProfileCardDiv>
           )}
           {!showOperator && (
             <AllCardsDiv>
               {isMobile
                 ? allCards
-                  .slice(0, 6)
-                  .map((card: ICard) => (
-                    <Card
-                      key={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      phone={card.phoneNumber}
-                      url={card.url}
-                      onClick={() => handleCloseHeaderClickedCard(card)}
-                    />
-                  ))
+                    .slice(0, 6)
+                    .map((card: ICard) => (
+                      <Card
+                        key={card.id}
+                        name={card.name}
+                        instituition={card.sector}
+                        phone={card.phoneNumber}
+                        url={card.url}
+                        onClick={() => handleCloseHeaderClickedCard(card)}
+                      />
+                    ))
                 : allCards
-                  .slice(0, 9)
-                  .map((card: ICard) => (
-                    <Card
-                      key={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      phone={card.phoneNumber}
-                      url={card.url}
-                      onClick={() => handleCardClicked(card)}
-                    />
-                  ))}
+                    .slice(0, 9)
+                    .map((card: ICard) => (
+                      <Card
+                        key={card.id}
+                        name={card.name}
+                        instituition={card.sector}
+                        phone={card.phoneNumber}
+                        url={card.url}
+                        onClick={() => handleCardClicked(card)}
+                      />
+                    ))}
             </AllCardsDiv>
           )}
 
