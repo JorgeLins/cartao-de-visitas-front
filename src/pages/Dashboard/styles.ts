@@ -19,7 +19,29 @@ export const StyledP = styled.p`
     padding-top: 5px;
     font-size: 20px;
   }
+  
 `;
+export const ColorStyledP = styled.p`
+  margin-top: 44px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+  text-align: left;
+  font: normal normal 600 25px/30px;
+  font-size: 25px;
+  font-weight: 545;
+  letter-spacing: 0px;
+  color: #0088fa;
+  opacity: 1;
+  border-bottom: 10px solid;
+  border-bottom-color: #0088fa;
+ 
+  @media only screen and (max-width: 650px) {
+    margin-top: 25px;
+    padding-top: 5px;
+    font-size: 20px;
+  }
+`;
+
 export const StyledDivChangePage = styled.div`
   display: flex;
   flex-direction: row;
