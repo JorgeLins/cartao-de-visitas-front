@@ -32,7 +32,7 @@ export const ColorStyledP = styled.p`
   letter-spacing: 0px;
   color: #0088fa;
   opacity: 1;
-  border-bottom: 10px solid;
+  border-bottom: 5px solid;
   border-bottom-color: #0088fa;
  
   @media only screen and (max-width: 650px) {
@@ -47,8 +47,7 @@ export const StyledDivChangePage = styled.div`
   flex-direction: row;
   P {
     &:hover {
-      font-size: 26px;
-     font-weight: 548;
+      color:  #4686bd;
       cursor: pointer;
     }
     &:current{
