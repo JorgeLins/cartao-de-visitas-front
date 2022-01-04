@@ -47,8 +47,13 @@ export const LoginModal = ({ text, secondText }: Texts) => {
       }
     }
   };
-
-
+  
+  
+  function inputHandler(event: { key: string; }){
+    if(event.key === 'Enter'){
+      loginHandler()
+  }
+}
   return (
     <StyledDiv>
      
@@ -65,6 +70,7 @@ export const LoginModal = ({ text, secondText }: Texts) => {
           type="email"
           placeholder="Endereço de e-mail"
           onChange={event => setUser(event.target.value)}
+          onKeyPress={inputHandler}
         />
       </StyledLogin>
 
@@ -75,10 +81,11 @@ export const LoginModal = ({ text, secondText }: Texts) => {
           type="password"
           placeholder="Senha"
           onChange={event => setPassword(event.target.value)}
+          onKeyPress={inputHandler}
         />
       </StyledLogin>
 
-      <StyledButton onClick={loginHandler} type="submit">
+      <StyledButton onClick={loginHandler}  type="submit">
         Entrar
       </StyledButton>
 

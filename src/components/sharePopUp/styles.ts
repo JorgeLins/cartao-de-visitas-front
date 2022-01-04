@@ -20,7 +20,7 @@ export const MainDiv = styled.div`
   @media only screen and (max-width: 650px) {
     margin: 0;
     margin-top: 50%;
-    left: 8%;
+    left: 25%;
     padding-left: 0px;
     width: 330px;
     height: 300px;

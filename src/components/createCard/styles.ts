@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { AiOutlineArrowLeft, AiOutlineClose } from "react-icons/ai";
+import InputMask from 'react-input-mask';
+
 
 export const AboutDiv = styled.div`
   position: absolute;
@@ -7,7 +9,7 @@ export const AboutDiv = styled.div`
   border: 1px solid #0082d4;
   border-radius: 20px;
   opacity: 1;
-  margin: 5% 23%;
+  margin: 6% 14%;
   width: 1030px;
   height: 750px;
   z-index: 3;
@@ -77,11 +79,67 @@ export const StyledColunmInput = styled.div`
 export const StyledInput = styled.input`
   margin-bottom: 50px;
   width: 360px;
+  padding: 8px;
   height: 40px;
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 1px solid #888888;
   border-radius: 5px;
   opacity: 1;
+  &:hover {
+    border-color: #0082d4;
+  }
+  @media only screen and (max-width: 650px) {
+    width: 100%;
+  }
+`;
+
+export const StyledSectorInput = styled.input`
+  margin-bottom: 50px;
+  width: 360px;
+  padding: 8px;
+  height: 40px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  opacity: 1;
+  text-transform: uppercase;
+  &:hover {
+    border-color: #0082d4;
+  }
+  @media only screen and (max-width: 650px) {
+    width: 100%;
+  }
+`;
+
+
+export const StyledPhoneInput = styled(InputMask)`
+  margin-bottom: 50px;
+  width: 360px;
+  height: 40px;
+  padding: 8px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  opacity: 1;
+  &:hover {
+    border-color: #0082d4;
+  }
+  @media only screen and (max-width: 650px) {
+    width: 100%;
+  }
+`;
+
+
+export const StyledNameInput = styled.input`
+  margin-bottom: 50px;
+  width: 360px;
+  padding: 8px;
+  height: 40px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  opacity: 1;
+  text-transform: Capitalize;
   &:hover {
     border-color: #0082d4;
   }
@@ -137,6 +195,9 @@ export const StyledCancelButton = styled.button`
   height: 48px;
   border: none;
   margin-left: 10px;
+  &:hover{
+    color:  #4686bd;
+  }
 `;
 
 export const CloseLogo = styled(AiOutlineClose)`
@@ -146,6 +207,7 @@ export const CloseLogo = styled(AiOutlineClose)`
   margin-left: 90%;
   &:hover{
     cursor: pointer;
+    color:  #4686bd;
   }
 `;
 

@@ -10,9 +10,9 @@ export const StyledHeader = styled.div`
   background: #0088fa 0% 0% no-repeat padding-box;
   opacity: 1;
   height: 80px;
-  margin-bottom: 122px;
+  margin-bottom: 50px;
   @media only screen and (max-width: 650px) {
-      
+    margin-bottom: 122px;
     flex-direction: column;
     background: white 0% 0% no-repeat padding-box;
    
@@ -119,4 +119,3 @@ export const PlusButton = styled(GoPlus)`
 export const HamburgerButton = styled (GiHamburgerMenu)`
 
 `
-

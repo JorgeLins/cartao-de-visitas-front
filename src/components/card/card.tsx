@@ -16,6 +16,8 @@ export const Card = ({ name, instituition, phone, url, onClick }: ICardProps) =>
   const isMobile = useMediaQuery({
     query: "(max-device-width: 640px)",
   });
+
+  
   return (
     <>
     

@@ -47,7 +47,7 @@ export const Dashboard = () => {
   });
   const getAllProfileCards = useCallback(async () => {
     const token = localStorage.getItem("token");
-    PER_PAGE = 3;
+    PER_PAGE = 4;
     const getProfileCards = await api.get("user", {
       headers: { Authorization: `Bearer ${token}` },
       params: {
@@ -158,11 +158,13 @@ export const Dashboard = () => {
         </StyledDivSearch>
       )}
       {isMobile && info && hasClicked && (
+        <>
         <DataCard
           info={info}
           getAllCards={getAllcards}
           onClick={handleCloseCard}
         />
+        </>
       )}
 
       {isMobile && showHeader && (
@@ -204,7 +206,7 @@ export const Dashboard = () => {
                     />
                   ))
               : cardRecent
-                  .slice(0, 3)
+                  .slice(0, 4)
                   .map((card: ICard) => (
                     <Card
                       key={card.id}
@@ -303,6 +305,7 @@ export const Dashboard = () => {
                         url={card.url}
                         onClick={() => handleCardClicked(card)}
                       />
+                      
                     ))}
             </AllCardsDiv>
           )}

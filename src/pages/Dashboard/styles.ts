@@ -160,7 +160,7 @@ export const CardsDiv = styled.div`
 `;
 export const ProfileCardDiv = styled.div`
   padding-top: 20px;
-  grid-template-rows: 150px 150px 150px;
+  grid-template-rows: 100px 100px 100px;
   display: grid;
   grid-template-columns: 260px;
   & > div:nth-child(even) {
@@ -168,6 +168,7 @@ export const ProfileCardDiv = styled.div`
   }
   @media only screen and (max-width: 650px) {
     grid-template-columns: 230px;
+    grid-template-rows: 100px 100px 100px;
   }
   @media only screen and (max-width: 1700px) and(min-width:800px) {
     grid-template-columns: 230px;
@@ -175,7 +176,7 @@ export const ProfileCardDiv = styled.div`
   }
   @media only screen and (max-width: 1720px) and (min-width: 800px) {
     grid-template-columns: 260px;
-    grid-template-rows: 150px;
+    grid-template-rows: 95px 95px;
   }
 `;
 
@@ -224,6 +225,7 @@ export const StyledPagination = styled.div`
     opacity: 1;
     color: white;
   }
+
   @media only screen and (max-width: 650px) {
     margin-top: auto;
     margin-left: 20%;

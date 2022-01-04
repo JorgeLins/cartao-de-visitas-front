@@ -14,6 +14,7 @@ export const StyledDiv = styled.div`
   }
 `;
 
+
 export const HeaderDiv = styled.div<IHeaderDiv>`
   display: flex;
   background-image: ${(props) =>

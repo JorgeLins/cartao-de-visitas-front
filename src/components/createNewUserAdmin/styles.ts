@@ -29,7 +29,7 @@ export const StyledTitle = styled.p`
   padding-top: 12px;
   padding-left: 29px;
   text-align: center;
-  margin-top: 17px;
+  margin-top: -17px;
   border: 1px solid #0082d4;
   border-left: none;
   border-radius: 0px 15px 15px 0px;
@@ -45,7 +45,7 @@ export const StyledTitle = styled.p`
   opacity: 1;
   @media only screen and (max-width: 650px) {
     width: 200px;
-    font-size: 24px;
+    font-size: 19px;
     text-align: left;
     border-radius: 0px 20px 20px 0px;
   }
@@ -69,6 +69,11 @@ export const StyledP = styled.p`
 
 export const StyledInputDiv = styled.div`
   margin-left: 30px;
+`;
+
+export const HeadDiv = styled.div`
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const StyledInputText = styled.label`
@@ -116,7 +121,7 @@ export const StyledButtonsDiv = styled.div`
 `;
 
 export const StyledConfirmButton = styled.button`
-  padding: 12px 25px 12px 25px;
+  padding: 10px;
   text-align: center;
   font: normal normal medium;
   border: none;
@@ -144,11 +149,14 @@ export const StyledCancelButton = styled.button`
   color: #707070;
   background-color: white;
   opacity: 1;
-  padding: 12px 25px 12px 25px;
+  padding: 10px;
   margin-left: 12px;
   width: 148px;
   height: 48px;
   opacity: 1;
+  &:hover{
+    color:  #4686bd;
+  }
   @media only screen and (max-width: 650px) {
    
    font-size: 18px;
@@ -168,5 +176,6 @@ export const CloseLogo = styled(AiOutlineClose)`
  }
  &:hover{
     cursor: pointer;
+    color:  #4686bd;
   }
 `;

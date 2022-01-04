@@ -1,6 +1,7 @@
 import { useState, useCallback, ChangeEvent } from "react";
 import { useMediaQuery } from "react-responsive";
 
+
 import api from "../../services/api";
 import {
   AboutH1,
@@ -8,6 +9,9 @@ import {
   StyledColunmInput,
   StyledInputsDiv,
   StyledInput,
+  StyledSectorInput,
+  StyledNameInput,
+  StyledPhoneInput,
   StyledLabel,
   StyledButtonDiv,
   StyledConfirmButton,
@@ -28,9 +32,14 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
     sector: "",
     phoneNumber: "",
     employeeEmail: "",
-    whatsAppNumber: "+55",
+    whatsAppNumber: "",
     website: ""
   });
+  
+
+
+
+  
   const [firstInputs, setFirstInputs] = useState<boolean>(true)
   const [nextInputs, setNextInputs] = useState<boolean>(false);
   const handleNextInputs = () => {
@@ -49,8 +58,9 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
   const changeData = useCallback((event: ChangeEvent<HTMLInputElement>, attribute: AttributesCard) => {
     const { value } = event.target
     setCard(currentCard => ({ ...currentCard, [attribute]: value }))
-  }, [])
 
+  }, [])
+  
   return (
     <AboutDiv>
       {isMobile ? <BackIcon size={25} onClick={onClick} /> : <CloseLogo size={25} onClick={onClick} />}
@@ -62,11 +72,11 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
         
         <StyledColunmInput>
           <StyledLabel htmlFor="nome">Nome</StyledLabel>
-          <StyledInput id="nome" onChange={event => changeData(event, 'name')} />
+          <StyledNameInput id="nome" onChange={event => changeData(event, 'name')} />
           <StyledLabel htmlFor="cargo">Cargo</StyledLabel>
           <StyledInput id="Cargo" onChange={event => changeData(event, 'role')} />
           <StyledLabel htmlFor="setor">Setor</StyledLabel>
-          <StyledInput id="setor" onChange={event => changeData(event, 'sector')} />
+          <StyledSectorInput id="setor" onChange={event => changeData(event, 'sector')} />
           <NextButton onClick={handleNextInputs}>Próximo</NextButton>
         </StyledColunmInput>
 
@@ -82,9 +92,9 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
             <StyledLabel htmlFor="e-mail">E-mail</StyledLabel>
             <StyledInput id="e-mail" type="email" onChange={event => changeData(event, 'employeeEmail')} />
             <StyledLabel htmlFor="number">Telefone</StyledLabel>
-            <StyledInput id="number" onChange={event => changeData(event, 'phoneNumber')} />
+            <StyledPhoneInput id="number" mask="(99)99999-9999" onChange={event => changeData(event, 'phoneNumber')} />
             <StyledLabel htmlFor="Whatsapp">Whatsapp</StyledLabel>
-            <StyledInput id="Whatsapp" onChange={event => changeData(event, 'whatsAppNumber')} value={card.whatsAppNumber}  />
+            <StyledPhoneInput id="Whatsapp" mask="+55 (99)99999-9999" onChange={event => changeData(event, 'whatsAppNumber')}value={card.whatsAppNumber}  />
             <StyledLabel htmlFor="site">Site</StyledLabel>
             <StyledInput id="site" onChange={event => changeData(event, 'website')} />
             <NextButton onClick={postCardData}>Gerar Cartão</NextButton>
@@ -100,20 +110,20 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
         <StyledInputsDiv>
           <StyledColunmInput>
             <StyledLabel htmlFor="nome">Nome</StyledLabel>
-            <StyledInput id="nome" onChange={event => changeData(event, 'name')} />
+            <StyledNameInput id="nome" onChange={event => changeData(event, 'name')} />
             <StyledLabel htmlFor="cargo">Cargo</StyledLabel>
             <StyledInput id="Cargo" onChange={event => changeData(event, 'role')} />
             <StyledLabel htmlFor="setor">Setor</StyledLabel>
-            <StyledInput id="setor" onChange={event => changeData(event, 'sector')} />
+            <StyledSectorInput id="setor" onChange={event => changeData(event, 'sector')} />
             <StyledLabel htmlFor="e-mail">E-mail</StyledLabel>
             <StyledInput id="e-mail" type="email" onChange={event => changeData(event, 'employeeEmail')} />
           </StyledColunmInput>
 
           <StyledColunmInput>
             <StyledLabel htmlFor="number">Telefone</StyledLabel>
-            <StyledInput id="number" onChange={event => changeData(event, 'phoneNumber')} />
+            <StyledPhoneInput id="number" mask="(99)99999-9999" onChange={event => changeData(event, 'phoneNumber')} />
             <StyledLabel htmlFor="Whatsapp">Whatsapp</StyledLabel>
-            <StyledInput id="Whatsapp" onChange={event => changeData(event, 'whatsAppNumber')}value={card.whatsAppNumber}  />
+            <StyledPhoneInput id="Whatsapp" mask="+55 (99)99999-9999" onChange={event => changeData(event, 'whatsAppNumber')}value={card.whatsAppNumber}  />
             <StyledLabel htmlFor="site">Site</StyledLabel>
             <StyledInput id="site" onChange={event => changeData(event, 'website')} />
           </StyledColunmInput>

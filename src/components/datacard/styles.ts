@@ -113,18 +113,17 @@ export const ImageFooter = styled.footer`
 `;
 
 export const MainDiv = styled.div`
-  float: right;
+      width: 820px;
+    display: inline-block;
+    float:none;
   @media only screen and (max-width: 650px) {
-    height: 110vh;
+    height: 105vh;
+    width: 0;
     position: absolute;
     z-index: 3;
     background-color: white;
   }
-  @media only screen and (max-width: 1550px) {
-    width: 820px;
-    display: inline-block;
-    float:none;
-  }
+
 
 `;
 
@@ -136,10 +135,10 @@ export const DataCardContainer = styled.div`
   margin-left:200px;
 
   @media only screen and (max-width: 650px) {
-    padding-top: 10%;
     width: 100vw;
     height: 100%;
-    padding-left: 20px;
+    margin-left: 0px;
+    margin-top: 16px;
   }
 
 `;
@@ -148,6 +147,8 @@ export const DataInfo = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 650px) {
+    margin-left: 60px;
+    margin-top: 10px;
   }
 `;
 
@@ -236,6 +237,7 @@ export const StyledButton = styled.button`
     border: none;
     color: #888888;
     margin-right: 0px;
+    margin-top: 10px;
   }
 `;
 
@@ -333,5 +335,5 @@ export const TrashIcon = styled(IoMdTrash)``;
 export const EditIcon = styled(MdEdit)``;
 
 export const BackIcon = styled(AiOutlineArrowLeft)`
-  padding-top: 10px;
+  margin-left:5px;
 `;

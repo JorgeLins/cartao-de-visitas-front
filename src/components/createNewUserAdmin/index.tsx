@@ -1,7 +1,7 @@
 import { useState, useCallback, ChangeEvent } from "react";
 import Axios, { AxiosError } from "axios";
 
-import { MainDiv, StyledTitle, StyledP, StyledInput, StyledInputDiv, StyledInputText, StyledButtonsDiv, StyledConfirmButton, StyledCancelButton, CloseLogo } from './styles'
+import { MainDiv, StyledTitle, StyledP, StyledInput, StyledInputDiv, StyledInputText, StyledButtonsDiv, StyledConfirmButton, StyledCancelButton, CloseLogo, HeadDiv } from './styles'
 import { AttributesRegister, INewUserAdmin } from './types'
 import api from "../../services/api";
 
@@ -34,8 +34,10 @@ export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
 
     return (
         <MainDiv>
-            <CloseLogo size={75} onClick={onClick} />
+            <HeadDiv>
+            <CloseLogo size={21} onClick={onClick} />
             <StyledTitle>Novo Administrador</StyledTitle>
+            </HeadDiv>
             <StyledP>Adicione um email para cadastrar o Administrador.</StyledP>
             <StyledInputDiv>
                 <StyledInputText htmlFor="nome">Nome</StyledInputText>

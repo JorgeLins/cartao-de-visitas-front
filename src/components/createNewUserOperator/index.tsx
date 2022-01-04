@@ -1,6 +1,6 @@
 
 import { useState, useCallback, ChangeEvent } from 'react'
-import { MainDiv, StyledTitle, StyledP, StyledInput, StyledInputDiv, StyledInputText, StyledButtonsDiv, StyledConfirmButton, StyledCancelButton, CloseLogo } from './styles'
+import { MainDiv, StyledTitle, StyledP, StyledInput, StyledInputDiv, StyledInputText, StyledButtonsDiv, StyledConfirmButton, StyledCancelButton, CloseLogo, HeadDiv } from './styles'
 import { INewUserOperator, AttributesRegister } from './types'
 import Axios, { AxiosError } from "axios";
 
@@ -38,8 +38,10 @@ export const CreateNewUserOperator = ({ onClick }: INewUserOperator) => {
     
     return (
         <MainDiv>
+            <HeadDiv>
             <CloseLogo size={isMobile? 25:21} onClick={onClick} />
             <StyledTitle>Novo Operador</StyledTitle>
+            </HeadDiv>
             <StyledP>Adicione um email para cadastrar o Operador.</StyledP>
             <StyledInputDiv>
                 <StyledInputText htmlFor="nome">Nome</StyledInputText>
