@@ -130,7 +130,7 @@ export const DataCard = ({ info, getAllCards, onClick }: IDataProps, attribute: 
               <ImageArrowLeft />
             </ImageLinksCotainer>
           </ImageCard>}
-          {isMobile && <BackIcon size={60} onClick={onClick} />}
+          {isMobile && <BackIcon size={40} onClick={onClick} />}
           {isMobile && previewCard && <MobileDiv><ImageCard >
             <ImageHeader>
             </ImageHeader>

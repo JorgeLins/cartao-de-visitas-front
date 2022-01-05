@@ -337,5 +337,5 @@ export const EditIcon = styled(MdEdit)``;
 
 export const BackIcon = styled(AiOutlineArrowLeft)`
   margin-left:5px;
-  width: 90px;
+  width: 60px;
 `;
