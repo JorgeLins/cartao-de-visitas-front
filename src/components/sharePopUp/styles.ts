@@ -19,10 +19,12 @@ export const MainDiv = styled.div`
   opacity: 1;
   @media only screen and (max-width: 650px) {
     margin: 0;
-    margin-top: 50%;
-    left: 25%;
+    left: 7px;
+    top: 156px;
+    bottom: 0px;
+    right: 0px;
     padding-left: 0px;
-    width: 330px;
+    width: 270px;
     height: 300px;
   }
 `;

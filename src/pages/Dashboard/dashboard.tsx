@@ -23,7 +23,7 @@ import {
   SearchLogo,
   StyledDivChangePage,
   ProfileCardDiv,
-  ColorStyledP
+  ColorStyledP, StyledHiddenIcon
 } from "./styles";
 import { ICard } from "./types";
 import { useMediaQuery } from "react-responsive";
@@ -40,6 +40,7 @@ export const Dashboard = () => {
   const [info, setInfo] = useState<ICard>();
   const [showHeader, setShowHeader] = useState<boolean>(true);
   const [searchOn, setSearchOn] = useState<boolean>(false);
+  const [searchIcon, setSearchIcon] = useState<boolean>(true);
   const [createCard, setCreateCard] = useState<boolean>(false);
   const [showOperator, setShowOperator] = useState<boolean>(false);
   const isMobile = useMediaQuery({
@@ -111,11 +112,13 @@ export const Dashboard = () => {
 
   const handleCloseCard = () => {
     setHasClicked(false);
+    setSearchIcon(true);
     setShowHeader(true);
   };
 
   const handleCardClicked = (card: ICard) => {
     setHasClicked(true);
+    setSearchIcon(false);
     setInfo(card);
   };
 
@@ -135,6 +138,7 @@ export const Dashboard = () => {
   const handleCloseHeaderClickedCard = (card: ICard) => {
     setShowHeader(false);
     setHasClicked(true);
+    setSearchIcon(false);
     setInfo(card);
   };
   const handleCloseHeader = () => {
@@ -147,9 +151,13 @@ export const Dashboard = () => {
   };
   return (
     <>
-      {isMobile && !searchOn && (
+      {isMobile && !searchOn && searchIcon && (
         <StyledIcon onClick={() => setSearchOn(true)} />
       )}
+      {isMobile && !searchIcon && (
+        <StyledHiddenIcon/>
+      )}
+
       {isMobile && searchOn && (
         <StyledDivSearch>
           <StyledSearchInput onChange={handleFilter} placeholder="Procurar" />

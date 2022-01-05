@@ -135,7 +135,7 @@ export const DataCardContainer = styled.div`
   margin-left:200px;
 
   @media only screen and (max-width: 650px) {
-    width: 100vw;
+    width: 95vw;
     height: 100%;
     margin-left: 0px;
     margin-top: 16px;
@@ -147,7 +147,7 @@ export const DataInfo = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 650px) {
-    margin-left: 60px;
+    width: 242px;
     margin-top: 10px;
   }
 `;
@@ -330,10 +330,12 @@ export const PreViewButton = styled.button`
   margin-bottom: 22px;
 `;
 
-export const TrashIcon = styled(IoMdTrash)``;
+export const TrashIcon = styled(IoMdTrash)`
+`;
 
 export const EditIcon = styled(MdEdit)``;
 
 export const BackIcon = styled(AiOutlineArrowLeft)`
   margin-left:5px;
+  width: 90px;
 `;

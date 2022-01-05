@@ -107,6 +107,22 @@ export const StyledIcon = styled(FiSearch)`
   }
 `;
 
+export const StyledHiddenIcon = styled(FiSearch)`
+  margin-top: 10px;
+  color: #a1a1a1;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  margin-left: 14px;
+  visibility: hidden;
+  @media only screen and (max-width: 650px) {
+    top: 25px;
+    margin-left: 90%;
+    width: 22px;
+    height: 22px;
+  }
+`;
+
 export const StyledSelect = styled.select`
   border: none;
   color: #a1a1a1;
