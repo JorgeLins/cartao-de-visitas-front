@@ -147,7 +147,7 @@ export const DataInfo = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 650px) {
-    width: 242px;
+    width: 246px;
     margin-top: 10px;
   }
 `;

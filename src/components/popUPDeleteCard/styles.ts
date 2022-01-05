@@ -19,7 +19,7 @@ export const MainDiv = styled.div`
     z-index: 4;
     width: 246px;
     height: 240px;
-    margin: 50% 3%;
+    margin: 50% 7%;
   }
 `;
 
