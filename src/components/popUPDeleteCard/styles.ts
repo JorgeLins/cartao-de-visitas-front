@@ -17,9 +17,9 @@ export const MainDiv = styled.div`
   @media only screen and (max-width: 650px) {
     padding-left: 0px;
     z-index: 4;
-    width: 300px;
+    width: 246px;
     height: 240px;
-    margin: 50% 13%;
+    margin: 50% 3%;
   }
 `;
 
@@ -94,9 +94,9 @@ export const StyledCancelButton = styled.button`
   }
 `;
 export const CloseLogo = styled(AiOutlineClose)`
-  position: absolute;
-  margin-left: 428px;
-  margin-top: 30px;
+    position: absolute;
+    margin-left: 221px;
+    margin-top: 5px;
   &:hover{
     cursor: pointer;
   }
