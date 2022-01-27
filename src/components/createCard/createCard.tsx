@@ -31,15 +31,15 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
     role: "",
     sector: "",
     phoneNumber: "",
-    employeeEmail: "",
     whatsAppNumber: "",
+    employeeEmail: "",
     website: ""
   });
-  
 
 
 
-  
+
+
   const [firstInputs, setFirstInputs] = useState<boolean>(true)
   const [nextInputs, setNextInputs] = useState<boolean>(false);
   const handleNextInputs = () => {
@@ -49,7 +49,10 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
 
   const postCardData = useCallback(async () => {
     const token = localStorage.getItem("token");
-    await api.post('/visitcard/new', card, { headers: { Authorization: `Bearer ${token}` } })
+    await api.post('/visitcard/new', card, { headers: { Authorization: `Bearer ${token}` }}).then(response =>{
+      console.log(response)
+    }
+    )
     getAllCards();
     onClick()
   }, [card])
@@ -60,28 +63,28 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
     setCard(currentCard => ({ ...currentCard, [attribute]: value }))
 
   }, [])
-  
+
   return (
     <AboutDiv>
       {isMobile ? <BackIcon size={25} onClick={onClick} /> : <CloseLogo size={25} onClick={onClick} />}
       <AboutH1>{isMobile ? "Novo cartão virtual" : "Criar Novo Cartão"}</AboutH1>
-     
+
       {isMobile && firstInputs && <>
         <StyledIndicatorStage> ETAPA (1/2)</StyledIndicatorStage>
-      <StyledInputsDiv>
-        
-        <StyledColunmInput>
-          <StyledLabel htmlFor="nome">Nome</StyledLabel>
-          <StyledNameInput id="nome" onChange={event => changeData(event, 'name')} />
-          <StyledLabel htmlFor="cargo">Cargo</StyledLabel>
-          <StyledInput id="Cargo" onChange={event => changeData(event, 'role')} />
-          <StyledLabel htmlFor="setor">Setor</StyledLabel>
-          <StyledSectorInput id="setor" onChange={event => changeData(event, 'sector')} />
-          <NextButton onClick={handleNextInputs}>Próximo</NextButton>
-        </StyledColunmInput>
+        <StyledInputsDiv>
 
-      </StyledInputsDiv>
-        
+          <StyledColunmInput>
+            <StyledLabel htmlFor="nome">Nome</StyledLabel>
+            <StyledNameInput id="nome" onChange={event => changeData(event, 'name')} />
+            <StyledLabel htmlFor="cargo">Cargo</StyledLabel>
+            <StyledInput id="Cargo" onChange={event => changeData(event, 'role')} />
+            <StyledLabel htmlFor="setor">Setor</StyledLabel>
+            <StyledSectorInput id="setor" onChange={event => changeData(event, 'sector')} />
+            <NextButton onClick={handleNextInputs}>Próximo</NextButton>
+          </StyledColunmInput>
+
+        </StyledInputsDiv>
+
       </>
       }
 
@@ -94,16 +97,16 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
             <StyledLabel htmlFor="number">Telefone</StyledLabel>
             <StyledPhoneInput id="number" mask="(99)99999-9999" onChange={event => changeData(event, 'phoneNumber')} />
             <StyledLabel htmlFor="Whatsapp">Whatsapp</StyledLabel>
-            <StyledPhoneInput id="Whatsapp" mask="+55 (99)99999-9999" onChange={event => changeData(event, 'whatsAppNumber')}value={card.whatsAppNumber}  />
+            <StyledPhoneInput id="Whatsapp" mask="+55 (99)99999-9999" onChange={event => changeData(event, 'whatsAppNumber')} value={card.whatsAppNumber} />
             <StyledLabel htmlFor="site">Site</StyledLabel>
             <StyledInput id="site" onChange={event => changeData(event, 'website')} />
             <NextButton onClick={postCardData}>Gerar Cartão</NextButton>
           </StyledColunmInput>
-         
+
         </StyledInputsDiv>
-      
-          
-       
+
+
+
       </>}
 
       {!isMobile && <>
@@ -123,7 +126,7 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
             <StyledLabel htmlFor="number">Telefone</StyledLabel>
             <StyledPhoneInput id="number" mask="(99)99999-9999" onChange={event => changeData(event, 'phoneNumber')} />
             <StyledLabel htmlFor="Whatsapp">Whatsapp</StyledLabel>
-            <StyledPhoneInput id="Whatsapp" mask="+55 (99)99999-9999" onChange={event => changeData(event, 'whatsAppNumber')}value={card.whatsAppNumber}  />
+            <StyledPhoneInput id="Whatsapp" mask="+55 (99)99999-9999" onChange={event => changeData(event, 'whatsAppNumber')} value={card.whatsAppNumber} />
             <StyledLabel htmlFor="site">Site</StyledLabel>
             <StyledInput id="site" onChange={event => changeData(event, 'website')} />
           </StyledColunmInput>

@@ -35,8 +35,8 @@ export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
     return (
         <MainDiv>
             <HeadDiv>
-            <CloseLogo size={21} onClick={onClick} />
-            <StyledTitle>Novo Administrador</StyledTitle>
+                <CloseLogo size={21} onClick={onClick} />
+                <StyledTitle>Novo Administrador</StyledTitle>
             </HeadDiv>
             <StyledP>Adicione um email para cadastrar o Administrador.</StyledP>
             <StyledInputDiv>
