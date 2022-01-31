@@ -266,6 +266,7 @@ export const Dashboard = () => {
                     .map((card: ICard) => (
                       <CardProfile
                         key={card.id}
+                        id={card.id}
                         name={card.name}
                         instituition={card.sector}
                         role={card.role}
@@ -278,6 +279,7 @@ export const Dashboard = () => {
                     .map((card: ICard) => (
                       <CardProfile
                         key={card.id}
+                        id={card.id}
                         name={card.name}
                         instituition={card.sector}
                         role={card.role}

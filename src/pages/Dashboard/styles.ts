@@ -192,7 +192,7 @@ export const ProfileCardDiv = styled.div`
   }
   @media only screen and (max-width: 1720px) and (min-width: 800px) {
     grid-template-columns: 260px;
-    grid-template-rows: 95px 95px;
+    grid-template-rows: 95px 95px 95px;
   }
 `;
 

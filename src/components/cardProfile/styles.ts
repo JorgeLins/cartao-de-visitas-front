@@ -17,6 +17,23 @@ export const NameNumberDIv = styled.div `
     
 `
 
+export const ButtonDiv = styled.div `
+    display: grid;
+    grid-template-columns: 400px 50px;
+`
+
+export const ButtonTrash = styled.button`
+    width: 34px;
+    height: 34px;
+    margin-top:25px;
+    color: #FFFF;
+    background-color: transparent;
+    border-color: transparent;
+    &:hover {
+        color: #d6d6d6
+    }
+`
+
 export const Name = styled.p`
     margin-top: 5px;
     text-align: left;
