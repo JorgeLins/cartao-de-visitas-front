@@ -8,8 +8,12 @@ import { useEffect, useState } from "react"
 export const CardProfile = ({name,role,id}:IcardProfileProps) =>{
 
 
-    function deleteUSer(id:string){
-        api.delete(`user/delete/${id}`)
+    async function deleteUSer(id:string){
+        const token = localStorage.getItem("token");
+        await api.delete(`user/delete/${id}` , {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        
     }     
 
     console.log(id)

@@ -31,11 +31,13 @@ import { useMediaQuery } from "react-responsive";
 export const Dashboard = () => {
   let PER_PAGE = 9;
   const [currentPage, setCurrentPage] = useState(1);
+  const [userCurrentPage, setUserCurrentPage] = useState(1);
   const [hasClicked, setHasClicked] = useState<boolean>(false);
   const [hasCardSelected, setHasCardSelected] = useState<boolean>(false);
   const [hasUserSelected, setHasUserSelected] = useState<boolean>(false);
   const [allCards, setAllCards] = useState([]);
   const [pageCount, setPageCount] = useState(0);
+  const [userPageCount, setuserPageCount] = useState(0);
   const [cardRecent, setCardRecent] = useState([]);
   const [info, setInfo] = useState<ICard>();
   const [showHeader, setShowHeader] = useState<boolean>(true);
@@ -52,15 +54,15 @@ export const Dashboard = () => {
     const getProfileCards = await api.get("user", {
       headers: { Authorization: `Bearer ${token}` },
       params: {
-        pagination: `{ "page": ${currentPage}, "perPage": ${PER_PAGE} }`,
+        pagination: `{ "page": ${userCurrentPage}, "perPage": ${PER_PAGE} }`,
       },
     });
-    setPageCount(Math.ceil(getProfileCards.data.total / PER_PAGE));
+    setuserPageCount(Math.ceil(getProfileCards.data.total / PER_PAGE));
     setAllCards(getProfileCards.data.data.reverse());
     handleSetOperator();
-    console.log(showOperator);
+    console.log(getProfileCards.data.data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentPage]);
+  }, [userCurrentPage]);
 
   const getAllcards = useCallback(async () => {
     const token = localStorage.getItem("token");
@@ -110,6 +112,11 @@ export const Dashboard = () => {
     setCurrentPage(event.selected + 1);
   };
 
+  const handleUserPageClick = (event: any) => {
+    console.log(event);
+    setUserCurrentPage(event.selected + 1);
+  };
+
   const handleCloseCard = () => {
     setHasClicked(false);
     setSearchIcon(true);
@@ -133,7 +140,7 @@ export const Dashboard = () => {
     setHasCardSelected(false);
     getAllProfileCards()
   };
-         
+
 
   const handleCloseHeaderClickedCard = (card: ICard) => {
     setShowHeader(false);
@@ -155,7 +162,7 @@ export const Dashboard = () => {
         <StyledIcon onClick={() => setSearchOn(true)} />
       )}
       {isMobile && !searchIcon && (
-        <StyledHiddenIcon/>
+        <StyledHiddenIcon />
       )}
 
       {isMobile && searchOn && (
@@ -167,11 +174,11 @@ export const Dashboard = () => {
       )}
       {isMobile && info && hasClicked && (
         <>
-        <DataCard
-          info={info}
-          getAllCards={getAllcards}
-          onClick={handleCloseCard}
-        />
+          <DataCard
+            info={info}
+            getAllCards={getAllcards}
+            onClick={handleCloseCard}
+          />
         </>
       )}
 
@@ -202,29 +209,29 @@ export const Dashboard = () => {
           <CardsDiv>
             {isMobile
               ? cardRecent
-                  .slice(0, 2)
-                  .map((card: ICard) => (
-                    <Card
-                      key={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      phone={card.phoneNumber}
-                      url={card.url}
-                      onClick={() => handleCloseHeaderClickedCard(card)}
-                    />
-                  ))
+                .slice(0, 2)
+                .map((card: ICard) => (
+                  <Card
+                    key={card.id}
+                    name={card.name}
+                    instituition={card.sector}
+                    phone={card.phoneNumber}
+                    url={card.url}
+                    onClick={() => handleCloseHeaderClickedCard(card)}
+                  />
+                ))
               : cardRecent
-                  .slice(0, 4)
-                  .map((card: ICard) => (
-                    <Card
-                      key={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      phone={card.phoneNumber}
-                      url={card.url}
-                      onClick={() => handleCardClicked(card)}
-                    />
-                  ))}
+                .slice(0, 4)
+                .map((card: ICard) => (
+                  <Card
+                    key={card.id}
+                    name={card.name}
+                    instituition={card.sector}
+                    phone={card.phoneNumber}
+                    url={card.url}
+                    onClick={() => handleCardClicked(card)}
+                  />
+                ))}
           </CardsDiv>
           <StyledDivChangePage>
             {hasCardSelected && !hasUserSelected && (
@@ -262,75 +269,98 @@ export const Dashboard = () => {
             <ProfileCardDiv>
               {isMobile
                 ? allCards
-                    .slice(0, 6)
-                    .map((card: ICard) => (
-                      <CardProfile
-                        key={card.id}
-                        id={card.id}
-                        name={card.name}
-                        instituition={card.sector}
-                        role={card.role}
-                        url={card.url}
-                        onClick={() => handleCloseHeaderClickedCard(card)}
-                      />
-                    ))
+                  .slice(0, 6)
+                  .map((card: ICard) => (
+                    <CardProfile
+                      key={card.id}
+                      id={card.id}
+                      name={card.name}
+                      instituition={card.sector}
+                      role={card.role}
+                      url={card.url}
+                      onClick={() => handleCloseHeaderClickedCard(card)}
+                    />
+                  ))
                 : allCards
-                    .slice(0, 9)
-                    .map((card: ICard) => (
-                      <CardProfile
-                        key={card.id}
-                        id={card.id}
-                        name={card.name}
-                        instituition={card.sector}
-                        role={card.role}
-                        url={card.url}
-                        onClick={() => handleCardClicked(card)}
-                      />
-                    ))}
+                  .slice(0, 9)
+                  .map((card: ICard) => (
+                    <CardProfile
+                      key={card.id}
+                      id={card.id}
+                      name={card.name}
+                      instituition={card.sector}
+                      role={card.role}
+                      url={card.url}
+                      onClick={() => handleCardClicked(card)}
+                    />
+                  ))}
             </ProfileCardDiv>
           )}
           {!showOperator && (
             <AllCardsDiv>
               {isMobile
                 ? allCards
-                    .slice(0, 6)
-                    .map((card: ICard) => (
-                      <Card
-                        key={card.id}
-                        name={card.name}
-                        instituition={card.sector}
-                        phone={card.phoneNumber}
-                        url={card.url}
-                        onClick={() => handleCloseHeaderClickedCard(card)}
-                      />
-                    ))
+                  .slice(0, 6)
+                  .map((card: ICard) => (
+                    <Card
+                      key={card.id}
+                      name={card.name}
+                      instituition={card.sector}
+                      phone={card.phoneNumber}
+                      url={card.url}
+                      onClick={() => handleCloseHeaderClickedCard(card)}
+                    />
+                  ))
                 : allCards
-                    .slice(0, 9)
-                    .map((card: ICard) => (
-                      <Card
-                        key={card.id}
-                        name={card.name}
-                        instituition={card.sector}
-                        phone={card.phoneNumber}
-                        url={card.url}
-                        onClick={() => handleCardClicked(card)}
-                      />
-                      
-                    ))}
+                  .slice(0, 9)
+                  .map((card: ICard) => (
+                    <Card
+                      key={card.id}
+                      name={card.name}
+                      instituition={card.sector}
+                      phone={card.phoneNumber}
+                      url={card.url}
+                      onClick={() => handleCardClicked(card)}
+                    />
+
+                  ))}
             </AllCardsDiv>
           )}
 
-          <StyledPagination>
-            <ReactPaginate
-              previousLabel={<BiFirstPage size={20} />}
-              nextLabel={<BiLastPage size={20} />}
-              pageCount={pageCount}
-              onPageChange={handlePageClick}
-              containerClassName={"pagination"}
-              pageRangeDisplayed={7}
-              marginPagesDisplayed={1}
-            />
-          </StyledPagination>
+          {hasCardSelected && !hasUserSelected && (
+            <>
+              <StyledPagination>
+                <ReactPaginate
+                  previousLabel={<BiFirstPage size={20} />}
+                  nextLabel={<BiLastPage size={20} />}
+                  pageCount={pageCount}
+                  onPageChange={handlePageClick}
+                  containerClassName={"pagination"}
+                  pageRangeDisplayed={7}
+                  marginPagesDisplayed={1}
+                />
+              </StyledPagination>
+            </>
+
+          )}
+          {hasUserSelected && !hasCardSelected && (
+                      <>
+                      <StyledPagination>	
+                        <ReactPaginate
+                          previousLabel={<BiFirstPage size={20} />}
+                          nextLabel={<BiLastPage size={20} />}
+                          pageCount={userPageCount}
+                          onPageChange={handleUserPageClick}
+                          containerClassName={"pagination"}
+                          pageRangeDisplayed={7}
+                          marginPagesDisplayed={1}
+                        />
+                      </StyledPagination>
+                    </>
+
+          )}
+
+
         </StyledDiv>
       )}
     </>

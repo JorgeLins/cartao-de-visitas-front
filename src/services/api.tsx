@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://cartao-de-visitas.herokuapp.com/",
+    baseURL: "https://vortex-hmg.unifor.br/cartaodevisitas/api/",
     headers: {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Headers": "Authorization", 
