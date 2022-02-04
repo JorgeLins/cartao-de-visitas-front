@@ -23,7 +23,7 @@ import {
   SearchLogo,
   StyledDivChangePage,
   ProfileCardDiv,
-  ColorStyledP, StyledHiddenIcon
+  ColorStyledP, StyledHiddenIcon, StyledUserPagination
 } from "./styles";
 import { ICard } from "./types";
 import { useMediaQuery } from "react-responsive";
@@ -276,20 +276,23 @@ export const Dashboard = () => {
                 ? allCards
                   .slice(0, 6)
                   .map((card: ICard) => (
-                    <CardProfile
-                      key={card.id}
-                      id={card.id}
-                      name={card.name}
-                      instituition={card.sector}
-                      role={card.role}
-                      url={card.url}
-                      onClick={() => handleCloseHeaderClickedCard(card)}
+                    <CardProfile 
+                    getAllCards={getAllProfileCards}
+                    key={card.id}
+                    id={card.id}
+                    name={card.name}
+                    instituition={card.sector}
+                    role={card.role}
+                    url={card.url}
+                    onClick={() => handleCloseHeaderClickedCard(card)}
+                    
                     />
                   ))
                 : allCards
                   .slice(0, 9)
                   .map((card: ICard) => (
                     <CardProfile
+                    getAllCards={getAllProfileCards}
                       key={card.id}
                       id={card.id}
                       name={card.name}
@@ -350,7 +353,7 @@ export const Dashboard = () => {
           )}
           {hasUserSelected && !hasCardSelected && (
                       <>
-                      <StyledPagination>	
+                      <StyledUserPagination>	
                         <ReactPaginate
                           nextLabel={<BiLastPage size={20} />}
                           previousLabel={<BiFirstPage size={20} />}
@@ -360,7 +363,7 @@ export const Dashboard = () => {
                           pageRangeDisplayed={7}
                           marginPagesDisplayed={1}
                         />
-                      </StyledPagination>
+                      </StyledUserPagination>
                     </>
 
           )}

@@ -249,6 +249,47 @@ export const StyledPagination = styled.div`
     padding-left: 45px;
   }
 `;
+
+export const StyledUserPagination = styled.div`
+  width: 381px;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 218px;
+
+  a {
+    font: normal normal 600;
+    font-size: 20px;
+    margin-left: 12px;
+    margin-right: 11px;
+    width: 100px;
+    height: 24px;
+    letter-spacing: 0px;
+    color: #bbbbbb;
+    opacity: 1;
+  }
+
+  
+
+
+  li:hover {
+    color: #bbbbbb;
+    height: 30px;
+    background: #0082d4 1000% 0% no-repeat padding-box;
+    border-radius: 5px;
+    opacity: 1;
+    color: white;
+  }
+
+  @media only screen and (max-width: 650px) {
+    margin-top: auto;
+    margin-left: 20%;
+    padding-top: 20px;
+    padding-left: 45px;
+  }
+`;
+
+
 export const CloseLogo = styled(AiOutlineClose)`
   margin-top: 6%;
   margin-left: 85%;

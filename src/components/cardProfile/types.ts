@@ -5,6 +5,7 @@ export interface IcardProfileProps {
   instituition: string;
   url: string;
   role:string;
+  getAllCards():void;
   onClick(): void;
 }
 export interface IDeleteProps {

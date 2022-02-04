@@ -5,14 +5,17 @@ import {FaTrashAlt} from "react-icons/fa"
 import api from "../../services/api"
 import { useEffect, useState } from "react"
 
-export const CardProfile = ({name,role,id}:IcardProfileProps) =>{
+export const CardProfile = ({name,role,id, getAllCards}:IcardProfileProps) =>{
 
 
     async function deleteUSer(id:string){
         const token = localStorage.getItem("token");
         await api.delete(`user/delete/${id}` , {
             headers: { Authorization: `Bearer ${token}` }
-        })
+            
+        }
+        )
+        getAllCards();
         
     }     
 
