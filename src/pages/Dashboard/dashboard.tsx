@@ -60,7 +60,7 @@ export const Dashboard = () => {
     setuserPageCount(Math.ceil(getProfileCards.data.total / PER_PAGE));
     setAllCards(getProfileCards.data.data.reverse());
     handleSetOperator();
-    console.log(getProfileCards.data.data);
+    // console.log(getProfileCards.data);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userCurrentPage]);
 
@@ -78,8 +78,10 @@ export const Dashboard = () => {
     });
     handleOffSetOperator();
     setPageCount(Math.ceil(getCards.data.total / PER_PAGE));
-    setAllCards(getCards.data.data.reverse());
+    setAllCards(getCards.data.data.reverse()); 
     setCardRecent(getCardsRecent.data.data.reverse());
+    // console.log(getCards.data);
+    
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
   const handleSetOperator = () => {
@@ -112,9 +114,11 @@ export const Dashboard = () => {
     setCurrentPage(event.selected + 1);
   };
 
-  const handleUserPageClick = (event: any) => {
-    console.log(event);
-    setUserCurrentPage(event.selected + 1);
+  const handleUserPageClick = (evento: any) => {
+    console.log(evento);
+    setUserCurrentPage(evento.selected + 1);
+    console.log(userCurrentPage)
+    getAllProfileCards()
   };
 
   const handleCloseCard = () => {
@@ -138,6 +142,7 @@ export const Dashboard = () => {
   const handleUserSelected = () => {
     setHasUserSelected(true);
     setHasCardSelected(false);
+    console.log(userCurrentPage)
     getAllProfileCards()
   };
 
@@ -347,8 +352,8 @@ export const Dashboard = () => {
                       <>
                       <StyledPagination>	
                         <ReactPaginate
-                          previousLabel={<BiFirstPage size={20} />}
                           nextLabel={<BiLastPage size={20} />}
+                          previousLabel={<BiFirstPage size={20} />}
                           pageCount={userPageCount}
                           onPageChange={handleUserPageClick}
                           containerClassName={"pagination"}
