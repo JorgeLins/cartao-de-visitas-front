@@ -26,7 +26,9 @@ import {
   ColorStyledP, StyledHiddenIcon, StyledUserPagination
 } from "./styles";
 import { ICard } from "./types";
+import Pagination from '@mui/material/Pagination';
 import { useMediaQuery } from "react-responsive";
+
 
 export const Dashboard = () => {
   let PER_PAGE = 9;
@@ -107,19 +109,24 @@ export const Dashboard = () => {
   useEffect(() => {
     getAllcards();
     setHasCardSelected(true);
+    
   }, [getAllcards]);
+  
+
+  useEffect(() =>{
+    getAllProfileCards()
+  },[getAllProfileCards]);
 
   const handlePageClick = (event: any) => {
     console.log(event);
     setCurrentPage(event.selected + 1);
   };
 
-  const handleUserPageClick = (evento: any) => {
-    console.log(evento);
-    setUserCurrentPage(evento.selected + 1);
-    console.log(userCurrentPage)
-    getAllProfileCards()
-  };
+  const handleUserPageClick = (event: any) => {
+    console.log(event);
+    setUserCurrentPage(event.selected + 1);
+
+    };
 
   const handleCloseCard = () => {
     setHasClicked(false);
@@ -143,6 +150,7 @@ export const Dashboard = () => {
     setHasUserSelected(true);
     setHasCardSelected(false);
     console.log(userCurrentPage)
+    setUserCurrentPage(1)
     getAllProfileCards()
   };
 
@@ -352,19 +360,19 @@ export const Dashboard = () => {
 
           )}
           {hasUserSelected && !hasCardSelected && (
-                      <>
-                      <StyledUserPagination>	
-                        <ReactPaginate
-                          nextLabel={<BiLastPage size={20} />}
-                          previousLabel={<BiFirstPage size={20} />}
-                          pageCount={userPageCount}
-                          onPageChange={handleUserPageClick}
-                          containerClassName={"pagination"}
-                          pageRangeDisplayed={7}
-                          marginPagesDisplayed={1}
-                        />
-                      </StyledUserPagination>
-                    </>
+            <>
+            <StyledPagination>
+              <ReactPaginate
+                previousLabel={<BiFirstPage size={20} />}
+                nextLabel={<BiLastPage size={20} />}
+                pageCount={userPageCount}
+                onPageChange={handleUserPageClick}
+                containerClassName={"pagination"}
+                pageRangeDisplayed={7}
+                marginPagesDisplayed={1}
+              />
+            </StyledPagination>
+          </>
 
           )}
 

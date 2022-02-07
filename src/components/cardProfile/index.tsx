@@ -18,8 +18,6 @@ export const CardProfile = ({name,role,id, getAllCards}:IcardProfileProps) =>{
         getAllCards();
         
     }     
-
-    console.log(id)
   
 
     return(
