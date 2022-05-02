@@ -9,6 +9,7 @@ import {
   TeacherDiv,
   StudentsDiv,
   CloseLogo,
+  List,
 } from "./styles";
 import { IAboutProps } from "./types";
 
@@ -20,18 +21,30 @@ export const About = ({ onClick }: IAboutProps) => {
       <DescritionDiv>
         <Title>Descrição</Title>
         <Descrition>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-          tempor placerat consequat. In et mi vel erat mollis aliquam.
-          Suspendisse sodales arcu turpis.
+          O cartão de visitas virtual é uma ideia da equipe de marketing da Universidade de Fortaleza
+            em conjunto com o laboratório de inovação tecnológica Vortex que foi criado com o intuito
+             de facilitar a divulgação das informações de contatos dos funcionários da Unifor, tais
+              como email, whatsapp e um site de escolha do usuário, possuindo acesso direto aos mesmos.
+
         </Descrition>
       </DescritionDiv>
       <HorizontalLine />
       <BottomDiv>
         <TeacherDiv>
-          <Title>Professores</Title>
+          <Title>Orientadores</Title>
+          <List>Eurico Vasconcelos</List>
+          <List>Jonatas Silva</List>
+          <List>Yuri Nekan</List>
         </TeacherDiv>
         <StudentsDiv>
-          <Title>Estudantes</Title>
+          <Title>Alunos</Title>
+          <List>Paulo Neto</List>
+          <List>Eduardo Santos</List>
+          <List>Gabriel Brito</List>
+          <List>Jorge Lins</List>
+          <List>Samuel Lucas</List>
+          <List>Davi Sisnando</List>
+        
         </StudentsDiv>
       </BottomDiv>
     </AboutDiv>

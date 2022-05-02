@@ -4,7 +4,6 @@ import mySVGMobile from "../../images/Mobile_ElementoAzul.png";
 import { IHeaderDiv } from "./types";
 import logoDesktop from "../../images/logoDesktop.svg";
 import logoMobile from "../../images/LogoMobile.svg";
-import Alert from '@mui/material/Alert';
 
 
 export const MainDiv = styled.div`
@@ -18,14 +17,14 @@ flex-direction: row;
 export const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 675px;
+  width: 31.563rem;
   @media only screen and (max-width: 640px){
     width: 100%;
   }
 `;
 export const StyledImageBackground = styled.img`
-width: 1245px;
-height: 1080px;
+width: 53.313rem;
+height: 67.5rem;
 @media only screen and (max-width: 640px){
   display:none;
 
@@ -40,7 +39,7 @@ export const HeaderDiv = styled.div<IHeaderDiv>`
   background-size: 930px;
   flex-direction: column;
   width: 100%;
-  padding: 98px 0 260px 72px;
+  padding: 60px 0 260px 72px;
 
   @media only screen and (max-width: 640px){
     
@@ -110,6 +109,7 @@ export const StyledInput = styled.input`
   border-radius: 7px;
   font-weight: 600;
   font-size: 20px;
+  margin-bottom: 15px;
   color: #888888;
   opacity: 0.3;
   padding-left: 24px;
@@ -121,7 +121,7 @@ export const StyledInput = styled.input`
 
 export const StyledButton = styled.button`
   border: none;
-  margin: 18px 67px 10px 67px;
+  margin: 18px 67px 0 67px;
   height: 80px;
   background: #0088fa;
   border-radius: 8px;
@@ -182,9 +182,4 @@ export const StyledImageGreen = styled.img`
   width:30px;
   height:30px;
   margin-left:auto;
-`
-export const StyledAlert = styled(Alert)`
-width: 340px;
-margin: 0px 67px 10px 67px;
-
 `

@@ -2,4 +2,4 @@ export interface INewUserOperator{
     onClick(): void
 }
 
-export type AttributesRegister = 'name' | 'email' | 'password' | 'enrollment' | 'role' 
+export type AttributesRegister = 'name' | 'email' | 'enrollment' | 'role' 

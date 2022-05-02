@@ -23,10 +23,9 @@ import {
   SearchLogo,
   StyledDivChangePage,
   ProfileCardDiv,
-  ColorStyledP, StyledHiddenIcon, StyledUserPagination
+  ColorStyledP, StyledHiddenIcon, StyledUserPagination, StyledRowDiv
 } from "./styles";
 import { ICard } from "./types";
-import Pagination from '@mui/material/Pagination';
 import { useMediaQuery } from "react-responsive";
 
 
@@ -208,6 +207,8 @@ export const Dashboard = () => {
         <CreateCard getAllCards={getAllcards} onClick={handleOpenHeader} />
       )}
 
+      
+
       {!isMobile && info && hasClicked && (
         <DataCard
           info={info}
@@ -216,6 +217,8 @@ export const Dashboard = () => {
         />
       )}
       {showHeader && (
+      
+
         <StyledDiv>
           <StyledP>Recentemente Adicionados</StyledP>
 
@@ -378,6 +381,7 @@ export const Dashboard = () => {
 
 
         </StyledDiv>
+
       )}
     </>
   );

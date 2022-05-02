@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import YouTube from 'react-youtube';
+import { MdExploreOff } from "react-icons/md";
+
 export const AboutDiv = styled.div`
   position: absolute;
   top: calc(50% - 21.875rem);
@@ -11,6 +14,7 @@ export const AboutDiv = styled.div`
   width: 64.375rem;
   height: 43.75rem;
   z-index: 3;
+  overflow: hidden;
 
   @media only screen and (max-width: 640px) {
     border-radius: 0px;
@@ -58,11 +62,11 @@ export const AboutH1 = styled.h1`
   }
 `;
 export const DescritionDiv = styled.div`
-  margin-top: 48px;
-  display: flex;
-  flex-direction: column;
-  margin-left: 68px;
-  margin-bottom: 0px;
+margin-top: 5px;
+display: flex;
+flex-direction: column;
+margin-left: 68px;
+margin-bottom: 0px;
 
   @media only screen and (max-width: 640px) {
     margin-left: 20px;
@@ -77,6 +81,7 @@ export const Title = styled.p`
   letter-spacing: 0px;
   color: #0082d4;
   opacity: 1;
+  
 
   @media only screen and (max-width: 640px) {
     font-size: 20px;
@@ -89,28 +94,11 @@ export const Title = styled.p`
 
 export const Descrition = styled.p`
   width: 506px;
-  height: 200px;
+  height: 88px;
   text-align: left;
   font: normal normal normal;
   font-size: 18px;
   letter-spacing: 0px;
-  color: #a4a4a4;
-  opacity: 1;
-
-  @media only screen and (max-width: 640px) {
-    width: 317px;
-    height: 114px;
-  }
-`;
-
-export const List = styled.p`
-  width: 506px;
-  height: 30px;
-  text-align: left;
-  font: normal normal normal;
-  font-size: 18px;
-  letter-spacing: 0px;
-  margin-bottom: 0px;
   color: #a4a4a4;
   opacity: 1;
 
@@ -121,17 +109,18 @@ export const List = styled.p`
 `;
 
 export const HorizontalLine = styled.hr`
-  width: 80%;
+  width: 88%;
   margin: auto;
   border-top: 1px solid #a4a4a4;
 `;
 
 export const BottomDiv = styled.div`
   margin-top: 20px;
-  margin-left: 68px;
   display: flex;
+  align-items: center;
   flex-direction: row;
-  
+  margin-left: 130px;
+margin-right: 130px;
 
   @media only screen and (max-width: 640px) {
     margin-left: 20px;
@@ -142,8 +131,7 @@ export const BottomDiv = styled.div`
 export const TeacherDiv = styled.div`
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
-  width: 360px;
+  margin-right: 125px;
 
   @media only screen and (max-width: 640px) {
     margin-bottom: 35px;
@@ -153,8 +141,16 @@ export const TeacherDiv = styled.div`
 export const StudentsDiv = styled.div`
   display: flex;
   flex-direction: column;
-  width: 250px;
 `;
+
+export const YoutubePlayer = styled(YouTube) `
+  border: 2px solid #0082d4;
+  border-radius: 15px;
+  opacity: 1;
+  height: 390px;
+  width: 640px;
+  margin-left: 55px;
+`
 
 export const CloseLogo = styled(AiOutlineClose)`
   position: absolute;

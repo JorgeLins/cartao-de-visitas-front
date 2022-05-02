@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { AiOutlineArrowLeft, AiOutlineClose } from "react-icons/ai";
 import InputMask from 'react-input-mask';
+import Alert from "@mui/material/Alert";
 
 
 export const AboutDiv = styled.div`
@@ -239,3 +240,8 @@ export const StyledIndicatorStage = styled.div`
     color: #b1b100;
   }
 `;
+
+export const StyledAlert = styled(Alert)`
+width: 416px;
+margin: 0px 67px 10px 67px;
+`

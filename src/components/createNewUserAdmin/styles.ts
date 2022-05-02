@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import Alert from "@mui/material/Alert";
 
 export const MainDiv = styled.div`
   position: absolute;
   margin: 10% 28%;
   position: absolute;
   width: 816px;
-  height: 593px;
+  height: 660px;
   display: flex;
   border: 1px solid #0082d4;
   border-radius: 20px;
@@ -34,7 +35,7 @@ export const StyledTitle = styled.p`
   border-left: none;
   border-radius: 0px 15px 15px 0px;
   opacity: 1;
-  width: 270px;
+  width: 300px;
   height: 60px;
   text-align: left;
   font: normal normal;
@@ -179,3 +180,8 @@ export const CloseLogo = styled(AiOutlineClose)`
     color:  #4686bd;
   }
 `;
+
+export const StyledAlert = styled(Alert)`
+width: 416px;
+margin: 10px 0px 10px 0px;
+`

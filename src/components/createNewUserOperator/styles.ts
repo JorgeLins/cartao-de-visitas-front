@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { AiOutlineClose } from "react-icons/ai";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 export const MainDiv = styled.div`
   position: absolute;
@@ -27,6 +29,12 @@ export const MainDiv = styled.div`
     width: 820px;
   }
 `;
+
+
+export const StyledAlert = styled(Alert)`
+    width: 447px;
+    border-radius: 13px;
+`
 
 export const StyledTitle = styled.p`
   display: inline-block;

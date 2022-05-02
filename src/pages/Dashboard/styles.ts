@@ -133,6 +133,11 @@ export const StyledSelect = styled.select`
   opacity: 1;
 `;
 
+export const StyledRowDiv = styled.div`
+  display: flex;
+  flex-direction: row;
+`
+
 export const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -219,6 +224,7 @@ export const StyledPagination = styled.div`
   height: 30px;
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
   margin-left: 218px;
 
   a {
@@ -231,6 +237,14 @@ export const StyledPagination = styled.div`
     letter-spacing: 0px;
     color: #bbbbbb;
     opacity: 1;
+  }
+
+  li.selected {
+  height: 30px;
+  background: #0082d4 1000% 0% no-repeat padding-box;
+  border-radius: 5px;
+  opacity: 1;
+  color: white;
   }
 
   li:hover {
@@ -272,10 +286,11 @@ export const StyledUserPagination = styled.div`
   
 
 
+
   li:hover {
     color: #bbbbbb;
     height: 30px;
-    background: #0082d4 1000% 0% no-repeat padding-box;
+    background: red 1000% 0% no-repeat padding-box;
     border-radius: 5px;
     opacity: 1;
     color: white;

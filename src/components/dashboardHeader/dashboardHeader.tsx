@@ -3,6 +3,7 @@ import { useState } from "react";
 import { CreateCard } from "../createCard/createCard";
 import { PopUpLogout } from "../popLogout";
 import { CreateNewUser } from "../createNewUser";
+import { useHistory } from "react-router";
 
 import {
   StyledTitle,
@@ -19,6 +20,7 @@ import {
 import { IcardUpdate } from "./types";
 import { About } from "../about/about";
 import { useMediaQuery } from "react-responsive";
+import { Tutorial } from "../tutorial";
 
 export const DashboardHeader = ({
   getAllcards,
@@ -32,7 +34,8 @@ export const DashboardHeader = ({
   const [hasClicked, setHasClicked] = useState<boolean>(false);
   const [hasLogout, setHasLogout] = useState<boolean>(false);
   const [hasUserClicked, setHasUserClicked] = useState<Boolean>(false);
-
+  const [hasClickedTutorial, setTutorialHasClicked] = useState<Boolean>(false);
+  const [hasClickedPassChange, setPassChangeHasClicked] = useState<Boolean>(false);
   const [hasClickedAbout, setAboutHasClicked] = useState<Boolean>(false);
   const handleLogoutClicked = () => {
     console.log("clicou");
@@ -58,6 +61,11 @@ export const DashboardHeader = ({
 
   const handleAbout = () => setAboutHasClicked(true);
   const handleAboutClose = () => setAboutHasClicked(false);
+  const handleTutorial = () => setTutorialHasClicked(true);
+  const handleTutorialClose = () => setTutorialHasClicked(false);
+  // const handlePassword = () => {
+  //   history.push("/dashboard");
+  // }
 
   return (
     <StyledHeader>
@@ -87,6 +95,7 @@ export const DashboardHeader = ({
         <CreateNewUser onClick={handleButtonCreateUserClickedClose} />
       )}
       {hasClickedAbout && <About onClick={handleAboutClose}></About>}
+      {hasClickedTutorial && <Tutorial onClick={handleTutorialClose}></Tutorial>}
 
       {isMobile && !searchOn && (
         <StyledDropdown>
@@ -96,6 +105,14 @@ export const DashboardHeader = ({
           <StyledDropdownMenu>
             <StyledDropdownItem onClick={handleAbout}>
               Sobre o Sistema
+            </StyledDropdownItem>
+
+            <StyledDropdownItem onClick={handleTutorial} >
+            Tutorial do sistema
+            </StyledDropdownItem>
+
+            <StyledDropdownItem href="/update_password">
+            Alterar a senha
             </StyledDropdownItem>
 
             <StyledDropdownItem onClick={handleLogoutClicked}>
@@ -112,6 +129,14 @@ export const DashboardHeader = ({
           <StyledDropdownMenu>
             <StyledDropdownItem onClick={handleAbout}>
               Sobre o Sistema
+            </StyledDropdownItem>
+
+            <StyledDropdownItem onClick={handleTutorial}>
+            Tutorial do sistema
+            </StyledDropdownItem>
+
+            <StyledDropdownItem href="/update_password">
+              Alterar a senha
             </StyledDropdownItem>
 
             <StyledDropdownItem onClick={handleLogoutClicked}>

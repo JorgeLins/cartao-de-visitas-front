@@ -1,8 +1,11 @@
+import Collapse from "@mui/material/Collapse";
 import { useState, useCallback, ChangeEvent } from "react";
 import { useMediaQuery } from "react-responsive";
+import Axios, { AxiosError } from "axios";
 
 
 import api from "../../services/api";
+import Expire from "../expire/expire";
 import {
   AboutH1,
   AboutDiv,
@@ -18,7 +21,7 @@ import {
   StyledCancelButton,
   CloseLogo,
   BackIcon,
-  NextButton, StyledIndicatorStage
+  NextButton, StyledIndicatorStage, StyledAlert
 } from "./styles";
 import { ICreateProps, AttributesCard } from "./types";
 
@@ -39,7 +42,9 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
 
 
 
-
+  const [feedback, setFeedback] = useState<string>("");
+  const [open, setOpen] = useState(true);
+  const [calledError, setCalledError] = useState<boolean>(false);
   const [firstInputs, setFirstInputs] = useState<boolean>(true)
   const [nextInputs, setNextInputs] = useState<boolean>(false);
   const handleNextInputs = () => {
@@ -49,10 +54,21 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
 
   const postCardData = useCallback(async () => {
     const token = localStorage.getItem("token");
-    await api.post('/visitcard/new', card, { headers: { Authorization: `Bearer ${token}` }}).then(response =>{
-      console.log(response)
+    try{
+      await api.post('/visitcard/new', card, { 
+        headers: { Authorization: `Bearer ${token}` }}).then(response =>{
+        console.log(response)
+      }
+      )
+
     }
-    )
+    catch (error) {
+      if (Axios.isAxiosError(error)) {
+        setFeedback((error as AxiosError).response?.data.message);
+        setCalledError(true)
+
+      }
+    }
     getAllCards();
     onClick()
   }, [card])
@@ -131,6 +147,21 @@ export const CreateCard = ({ onClick, getAllCards }: ICreateProps) => {
             <StyledInput id="site" onChange={event => changeData(event, 'website')} />
           </StyledColunmInput>
         </StyledInputsDiv>
+        {calledError && (
+          <Expire delay="5000">
+            <Collapse in={open}>
+              <StyledAlert
+                variant="filled"
+                severity="error"
+                sx={{ mb: 2 }}
+              >
+                {feedback}
+
+              </StyledAlert>
+            </Collapse>
+          </Expire>
+        )
+        }
         <StyledButtonDiv>
           <StyledConfirmButton onClick={postCardData}>Confirmar</StyledConfirmButton>
           <StyledCancelButton onClick={onClick}>Cancelar</StyledCancelButton>

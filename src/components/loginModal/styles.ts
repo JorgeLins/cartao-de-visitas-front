@@ -4,6 +4,8 @@ import mySVGMobile from "../../images/Mobile_ElementoAzul.png";
 import { IHeaderDiv } from "./types";
 import logoDesktop from "../../images/logoDesktop.svg";
 import logoMobile from "../../images/LogoMobile.svg";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 
 export const StyledDiv = styled.div`
   display: flex;
@@ -14,17 +16,25 @@ export const StyledDiv = styled.div`
   }
 `;
 
+export const CheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  margin: 0 57px;
+`;
+
 
 export const HeaderDiv = styled.div<IHeaderDiv>`
   display: flex;
   background-image: ${(props) =>
     props.mobile ? `url(${mySVGMobile})` : `url(${mySVG})`};
-  background-repeat: no-repeat;
-  background-position: -115px -85px;
-  background-size: 930px;
-  flex-direction: column;
-  width: 100%;
-  padding: 98px 0 260px 72px;
+background-repeat: no-repeat;
+background-position: -7.188rem -5.313rem;
+background-size: 55.688rem;
+flex-direction: column;
+width: 100%;
+padding:45px 0 200px 72px;
+
 
   @media only screen and (max-width: 640px){
 
@@ -111,7 +121,7 @@ export const StyledInput = styled.input`
 
 export const StyledButton = styled.button`
   border: none;
-  margin: 18px 67px 0 67px;
+  margin: 18px 67px 10px 67px;
   height: 80px;
   background: #0088fa;
   border-radius: 8px;
@@ -136,16 +146,25 @@ export const StyledLinkText = styled.p`
 `;
 
 export const StyledA = styled.a`
-  margin-top: 50px;
   text-decoration: underline;
+  font-size: 18px;
+  padding: 9px 0px;
+  margin-left: 7px;
+  color: #bbbbbb;
+  cursor: pointer;
+  
+  
+`;
+
+
+export const Styledtext = styled.p`
+  text-decoration: none;
+  padding: 9px 0px;
+  margin-bottom: 0px;
   font-size: 18px;
   color: #bbbbbb;
 
-  &:visited {
-    color: #bbbbbb;
-  }
 `;
-
 
 export const StyledLogo = styled.div<IHeaderDiv>`
   background-image: ${(props) =>
@@ -158,3 +177,12 @@ export const StyledLogo = styled.div<IHeaderDiv>`
   background-repeat: no-repeat;
   position: absolute;
 `;
+
+export const StyledAlert = styled(Alert)`
+width: 416px;
+margin: 0px 67px 10px 67px;
+`
+
+export const StyledSnackbar = styled(Snackbar)`
+align-self: center;
+`

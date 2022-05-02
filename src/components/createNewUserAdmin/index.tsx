@@ -1,9 +1,12 @@
 import { useState, useCallback, ChangeEvent } from "react";
 import Axios, { AxiosError } from "axios";
+import Collapse from '@mui/material/Collapse';
+import Expire from "../../components/expire/expire";
 
-import { MainDiv, StyledTitle, StyledP, StyledInput, StyledInputDiv, StyledInputText, StyledButtonsDiv, StyledConfirmButton, StyledCancelButton, CloseLogo, HeadDiv } from './styles'
+import { MainDiv, StyledTitle, StyledP, StyledInput, StyledInputDiv, StyledInputText, StyledButtonsDiv, StyledConfirmButton, StyledCancelButton, CloseLogo, HeadDiv, StyledAlert } from './styles'
 import { AttributesRegister, INewUserAdmin } from './types'
 import api from "../../services/api";
+import axios from "axios";
 
 export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
     const [register, setRegister] = useState({
@@ -14,6 +17,11 @@ export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
         role: ""
     })
 
+    const [feedback, setFeedback] = useState<string>("");
+    const [open, setOpen] = useState(true);
+    const [calledError, setCalledError] = useState<boolean>(false);
+
+
     const registerHandler = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -21,8 +29,9 @@ export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
             alert("usuário criado")
             onClick();
         } catch (error) {
-            if (Axios.isAxiosError(error)) {
-                alert((error as AxiosError).response?.data.message);
+            if (axios.isAxiosError(error)) {
+                setFeedback((error as AxiosError).response?.data.message);
+                setCalledError(true)
             }
         }
     }
@@ -40,7 +49,7 @@ export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
             </HeadDiv>
             <StyledP>Adicione um email para cadastrar o Administrador.</StyledP>
             <StyledInputDiv>
-                <StyledInputText htmlFor="nome">Nome</StyledInputText>
+                <StyledInputText htmlFor="nome" >Nome</StyledInputText>
                 <StyledInput id="nome" onChange={event => changeData(event, 'name')} />
                 <StyledInputText htmlFor="email">Email </StyledInputText>
                 <StyledInput id="email" onChange={event => changeData(event, 'email')} />
@@ -50,6 +59,31 @@ export const CreateNewUserAdmin = ({ onClick }: INewUserAdmin) => {
                 <StyledInput id="matricula" onChange={event => changeData(event, 'enrollment')} />
                 <StyledInputText htmlFor="cargo" >Cargo </StyledInputText>
                 <StyledInput id="cargo" onChange={event => changeData(event, 'role')} />
+
+                {calledError && (
+
+
+                    <>
+                        <Expire delay="4000">
+                            <Collapse in={open}>
+                                <StyledAlert
+                                    variant="filled"
+                                    severity="error"
+
+                                    sx={{ mb: 2 }}
+                                >
+                                    {feedback}
+
+                                </StyledAlert>
+                            </Collapse>
+                        </Expire>
+
+
+
+
+                    </>
+                )
+                }
             </StyledInputDiv>
             <StyledButtonsDiv>
                 <StyledConfirmButton onClick={registerHandler} type="submit" >Confirmar</StyledConfirmButton>
